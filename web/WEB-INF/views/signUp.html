@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+</head>
+<body>
+<!--/*@thymesVar id="createDto" type="uz.pdp.domain.dto.user.UserCreateDto"*/-->
+<form th:action="@{/sign-up}" method="post" th:object="${createDto}">
+    <input type="text" name="name" placeholder="name" required>
+    <br><br>
+    <input type="email" name="email" placeholder="email" required>
+    <br><br>
+    <input type="password" name="password" placeholder="password" required>
+    <br><br>
+    <button>Submit</button>
+</form>
+</body>
+</html>

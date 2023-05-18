@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seller</title>
+</head>
+<body>
+<h3><i><b>Create product</b></i></h3>
+
+<!--/*@thymesVar id="dto" type="uz.pdp.domain.dto.product.ProductCreateDto"*/-->
+<form th:action="@{/create}" method="post" th:object="${dto}">
+    <input type="hidden" name="userId" th:value="${id}">
+    <input type="text" name="name" placeholder="name" required>
+    <br><br>
+    <input type="text" name="description" placeholder="description" required>
+    <br><br>
+    <input type="number" name="price" placeholder="price" required min="1">
+    <br><br>
+    <input type="text" name="category" placeholder="category" list="categories" required>
+    <datalist id="categories">
+        <option>PHONE</option>
+        <option>LAPTOP</option>
+        <option>GADGET</option>
+    </datalist>
+
+    <br><br>
+    <button>submit</button>
+</form>
+
+<br>
+
+<h3><i><b>Products</b></i></h3>
+<table bgcolor="black" width="700">
+    <thead>
+    <tr bgcolor="gray">
+        <th width="400">id</th>
+        <th width="400">name</th>
+        <th width="400">description</th>
+        <th width="400">category</th>
+        <th width="400">price</th>
+        <th width="400">created date</th>
+        <th width="400">updated date</th>
+        <th width="400">delete</th>
+        <th width="400">set</th>
+    </tr>
+    </thead>
+    <tbody th:each="product : ${all}">
+
+    <tr bgcolor="#d3d3d3" align="center">
+        <!--/*@thymesVar id="product" type="uz.pdp.domain.dto.product.ProductReadDto"*/-->
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.category}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.createdDate}"></td>
+        <td th:text="${product.updatedDate}"></td>
+        <td><a th:href="@{/delete/{id}(id=${product.id})}">Delete</a></td>
+        <td><a th:href="@{/update/{id}(id=${product.id})}">Set</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

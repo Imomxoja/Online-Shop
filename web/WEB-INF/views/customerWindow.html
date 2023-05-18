@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+</head>
+<body>
+<form th:action="@{/category}" method="post">
+    <input type="text" name="category" placeholder="category" list="categories" required>
+    <datalist id="categories">
+        <option>PHONE</option>
+        <option>LAPTOP</option>
+        <option>GADGET</option>
+    </datalist>
+    <br><br>
+    <button>Submit</button>
+</form>
+<br><br>
+<form th:action="@{/search}" method="post">
+    <input type="text" name="part" placeholder="name" required>
+    <br><br>
+    <button>Submit</button>
+</form>
+<br><br>
+<table bgcolor="black" width="700">
+    <thead>
+    <tr bgcolor="gray">
+        <th width="400">id</th>
+        <th width="400">name</th>
+        <th width="400">description</th>
+        <th width="400">category</th>
+        <th width="400">price</th>
+        <th width="400">created date</th>
+        <th width="400">updated date</th>
+        <th width="400">add</th>
+    </tr>
+    </thead>
+    <tbody th:each="product : ${products}">
+
+    <tr bgcolor="#d3d3d3" align="center">
+        <!--/*@thymesVar id="product" type="uz.pdp.domain.dto.product.ProductReadDto"*/-->
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.category}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.createdDate}"></td>
+        <td th:text="${product.updatedDate}"></td>
+        <td><a th:href="@{/add/{id}(id=${product.id})}">add</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

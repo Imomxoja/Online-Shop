@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    <style>
+        .container {
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            text-align: center;
+        }
+
+        .inputs {
+            border-radius: 5px;
+            height: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--/*@thymesVar id="userDto" type="uz.pdp.domain.dto.user.UserCreateDto"*/-->
+    <form th:action="@{/sign-in}" method="post" th:object="${userDto}">
+        <label>Email :
+            <input type="email" name="email"  required class="inputs">
+        </label>
+        <br><br>
+        <label>Password :
+            <input type="password" name="password" required class="inputs">
+        </label>
+        <br><br>
+        <label>Role :
+            <input type="text" name="role" list="roles" required class="inputs">
+        </label>
+        <datalist id="roles">
+            <option>SELLER</option>
+            <option>CUSTOMER</option>
+        </datalist>
+        <br><br>
+        <button style="height: 30px;
+         width: 100px;
+         font-family: sans-serif;
+         border-radius: 5px"
+        >Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

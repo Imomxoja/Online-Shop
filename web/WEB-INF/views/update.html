@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<body>
+
+<!--/*@thymesVar id="dto" type="uz.pdp.domain.dto.product.ProductCreateDto"*/-->
+<form th:action="@{/set}" method="post" th:object="${dto}">
+    <input type="text" name="name" placeholder="name" required>
+    <br><br>
+    <input type="text" name="description" placeholder="description" required>
+    <br><br>
+    <input type="number" name="price" placeholder="price" required min="1">
+    <br><br>
+    <input type="text" name="category" placeholder="category" list="categories" required>
+    <datalist id="categories">
+        <option>PHONE</option>
+        <option>LAPTOP</option>
+        <option>GADGET</option>
+    </datalist>
+
+    <br><br>
+    <button>submit</button>
+</form>
+
+
+</body>
+</html>

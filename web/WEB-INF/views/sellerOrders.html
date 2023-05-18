@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+<h3><i><b>Orders for my products</b></i></h3>
+
+<table bgcolor="black" width="700">
+    <thead>
+    <tr bgcolor="gray">
+        <th width="400">id</th>
+        <th width="400">status</th>
+        <th width="400">product-name</th>
+        <th width="400">amount</th>
+        <th width="400">total-price</th>
+        <th width="400">created date</th>
+        <th width="400">updated date</th>
+        <th width="400">set status</th>
+    </tr>
+    </thead>
+    <tbody th:each="order : ${orders}">
+
+    <tr bgcolor="#d3d3d3" align="center">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.status}"></td>
+        <td th:text="${order.productName}"></td>
+        <td th:text="${order.amount}"></td>
+        <td th:text="${order.totalPrice}"></td>
+        <td th:text="${order.createdDate}"></td>
+        <td th:text="${order.updatedDate}"></td>
+        <td>
+            <form th:action="@{/setStatus/{id}(id=${order.id})}" method="post">
+                <input type="text" name="status" placeholder="status" list="statuses" required>
+                <datalist id="statuses">
+                    <option>ORDERED</option>
+                    <option>SHIPPING</option>
+                    <option>DELIVERED</option>
+                    <option>RETURNED</option>
+                    <option>FAILED</option>
+                </datalist>
+                <br><br>
+                <button>Submit</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

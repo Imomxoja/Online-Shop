@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>History</title>
+</head>
+<body>
+<h3><i><b>Histories</b></i></h3>
+
+<table bgcolor="black" width="700">
+    <thead>
+    <tr bgcolor="gray">
+        <th width="400">id</th>
+        <th width="400">product-name</th>
+        <th width="400">amount</th>
+        <th width="400">total-price</th>
+        <th width="400">created date</th>
+        <th width="400">updated date</th>
+    </tr>
+    </thead>
+    <tbody th:each="history : ${userHistories}">
+
+    <tr bgcolor="#d3d3d3" align="center">
+        <td th:text="${history.id}"></td>
+        <td th:text="${history.productName}"></td>
+        <td th:text="${history.amount}"></td>
+        <td th:text="${history.totalPrice}"></td>
+        <td th:text="${history.createdDate}"></td>
+        <td th:text="${history.updatedDate}"></td>
+
+    </tbody>
+</table>
+</body>
+</html>
